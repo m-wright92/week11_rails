@@ -4,9 +4,9 @@
 <%= form_for @product do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :coo %>
+  <%= f.label "Country Code of origin" %>
   <%= f.text_field :coo %>
   <%= f.label :cost %>
-  <%= f.text_field :cost %>
+  <%= f.number_field :cost %>
   <%= f.submit %>
 <% end %>
