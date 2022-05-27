@@ -34,9 +34,17 @@ describe Product do
       product.save
       product2 = Product.create({name: "little tiny shoes", coo: "usa", cost: 15, id: nil})
       product2.save
-      product3 = Product.create({name: "ordinarily regular shoes", coo: "usa", cost: 15, id: nil})
+      product3 = Product.create({name: "ordinarily normal shoes", coo: "usa", cost: 15, id: nil})
       product3.save
       expect(Product.three_recent).to(eq([product3, product2, product]))
+    end
+  end
+  describe '.usa' do
+    it "returns products made in selected country" do
+      product = Product.create({name: "big huge shoes", coo: "usa", cost: 15, id: nil})
+      product2 = Product.create({name: "little tiny shoes", coo: "usa", cost: 15, id: nil})
+      product3 = Product.create({name: "ordinarily regular shoes", coo: "zaf", cost: 15, id: nil})
+      expect(Product.usa).to(eq([product, product2]))
     end
   end
 end
