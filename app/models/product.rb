@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  scope :most_reviews, -> { }
   has_many :reviews, dependent: :destroy
   validates :name, presence: true
   validates :coo, presence: true
@@ -13,4 +14,4 @@ class Product < ApplicationRecord
   def coo_upcase
     self.coo = self.coo.upcase
   end
-end
+endgit
