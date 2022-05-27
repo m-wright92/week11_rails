@@ -1,0 +1,13 @@
+<h1>Edit Product</h1>
+
+<%= render "layouts/errors", :object => @project %>
+<%= form_for @product do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :coo %>
+  <%= f.text_field :coo %>
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+  <%= f.submit %>
+<% end %>
+
