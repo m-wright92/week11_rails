@@ -8,8 +8,10 @@ class Product < ApplicationRecord
     .limit(1)
   )}
   scope :three_recent, -> { order(created_at: :desc).limit(3)}
+  # scope :
   validates :name, presence: true
   validates :coo, presence: true
+  validates_length_of :coo, is: 3
   validates :cost, presence: true
   before_save :titleize_product, :coo_upcase
 
