@@ -9,4 +9,8 @@ describe Product do
     product = Product.create({name: "big huge shoes", coo: "usa", cost: 15})
     expect(product.name).to(eq("Big Huge Shoes"))
   end
+  it("upcases the coo before save") do
+    product = Product.create({name: "big huge shoes", coo: "usa", cost: 15})
+    expect(product.coo).to(eq("USA"))
+  end
 end
