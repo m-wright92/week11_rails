@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(division_params)
+    @product = Product.new(product_params)
     if @product.save
       redirect_to products_path
     else 
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   end
 
   private
-    def division_params
-      params.require(:product).permit(:name)
+    def product_params
+      params.require(:product).permit(:name, :cost, :coo)
     end
 end
