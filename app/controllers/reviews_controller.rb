@@ -1,31 +1,30 @@
 class ReviewsController < ApplicationController
 
-  def index
-    @reviews = Review.all
-    render :index
-  end
-
   def new
-    @review = Review.new
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.new
     render :new
   end
 
   def create
-    @review = Review.new(review_params)
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.new(review_params)
     if @review.save
-      redirect_to reviews_path
+      flash[:notice] = "Review uploaded!"
+      redirect_to product_path(@product)
     else 
       render :new
     end
   end
 
   def show
-    @products = Review.find(params[:id])
+    @review = Review.find(params[:id])
+    @product = Product.find(params[:project_id])
     render :show
   end
 
   private
     def review_params
-      params.require(:review).permit(:author, :rating, :content_body)
+      params.require(:review).permit(:author, :rating, :content_body, :product_id)
     end
 end

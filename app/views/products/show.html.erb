@@ -3,12 +3,13 @@
 <% if @product.reviews.any? %>
   <h4>Reviews:</h4>
 
-  <% @product.reviews.each do |product| %>
+  <% @product.reviews.each do |review| %>
     <p>
-      Reviewer:<%= review.author %>
-      Rating: <%= review.rating %>/5
+      Reviewer: <%= review.author %> 
+      Rating: <%= review.rating %>/5 <br>
       Review: <%= review.content_body%>
     </p>
+    <br>
   <% end %>
 <% else %>
   <p>There are no reviews for this product.</p>
