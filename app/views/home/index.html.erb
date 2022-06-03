@@ -1,1 +1,34 @@
 <h1>Welcome to Mario's Specialty Foods!</h1>
+
+<h2>Recently added products:</h2>
+<% if @products.any? %>
+  <ol>
+    <% @three_recent.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>There are no products yet.</p>
+<% end %>
+
+<h3>Made in the USA:</h3>
+<% if @usa.any? %>
+  <ul>
+    <% @usa.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>We don't currently have any products made in the USA.</p>
+<% end %>
+
+<h4>Products with the most reviews:</h4>
+<% if @most_reviews.any? %>
+  <ul>
+    <% @most_reviews.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no reviewed products yet.</p>
+<% end %>
