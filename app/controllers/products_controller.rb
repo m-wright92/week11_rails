@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:notice] = "Product added!"
       redirect_to products_path
     else 
       render :new
@@ -31,7 +32,7 @@ class ProductsController < ApplicationController
 
   def update
     @products = Product.find(params[:id])
-    if @products.update(products_params)
+    if @products.update(product_params)
       flash[:notice] = "Product Updated"
       redirect_to products_path
     else

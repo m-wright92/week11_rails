@@ -23,6 +23,13 @@ class ReviewsController < ApplicationController
     render :show
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    flash[:notice] = "Review Deleted"
+    redirect_to products_path
+  end
+
   private
     def review_params
       params.require(:review).permit(:author, :rating, :content_body, :product_id)
