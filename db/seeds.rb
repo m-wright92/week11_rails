@@ -7,3 +7,14 @@ Product.destroy_all
 end
 
 p "Created #{Product.count} products"
+
+Review.destroy_all
+
+250.times do |index|
+  Review.create!(author: Faker::GreekPhilosophers.name,
+                content_body: Faker::Lorem.paragraph_by_chars(number: 50..250, supplemental: false),
+                rating: Faker::Number.between(from: 1, to: 5),
+                product_id: )
+end
+
+params = { product: { name: Faker::Food.ingredient, }}
