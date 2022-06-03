@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @review = @product.reviews.new(author: "#{current_user.email}", review_params)
+    @review = @product.reviews.new(review_params)
     if @review.save
       flash[:notice] = "Review uploaded!"
       redirect_to product_path(@product)
@@ -36,6 +36,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:rating, :content_body, :product_id)
+      params.require(:review).permit(:author, :rating, :content_body, :product_id)
     end
 end

@@ -2,8 +2,8 @@
 
 <%= render "layouts/errors", :object => @review %>
 <%= form_for [@product, @review] do |f| %>
-  <%= f.label :author %>
-  <%= f.text_field :author %>
+  <%= f.label :author, style: 'display:none' %>
+  <%= f.text_field :author, value: current_user.email, style: 'display:none' %>
   <%= f.label :rating %>
   <%= f.select(:rating, options_for_select(1..5)) %>
   <%= f.label "Review" %>
