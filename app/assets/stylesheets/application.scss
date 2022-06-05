@@ -16,14 +16,15 @@
 
 nav {
   height: 8vh;
-  background-color: aquamarine;
+  background-color: rgb(205, 205, 205);
+  font-family: copperplate;
 }
 
 nav li {
   list-style-type: none;
   padding-right: 5vw;
   align-content: center;
-  padding-top: 2vh;
+  padding-top: 2.5vh;
 }
 
 nav .navbar-brand{
@@ -34,4 +35,13 @@ nav .navbar-brand{
 #user_auth {
   padding-left: 50vw;
   padding-right: 0vw;
+}
+
+body {
+  margin-left: 2vw;
+  background-color: rgb(184, 234, 251);
+}
+
+#about {
+  margin-right: 30vw;
 }
