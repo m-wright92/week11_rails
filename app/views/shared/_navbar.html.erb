@@ -8,7 +8,7 @@
       <li class="nav-item">
         <%= link_to 'Products', 'products#index' %>
       </li>
-      <li class="user_auth">
+      <li id="user_auth">
         <% if current_user %>
           <%= current_user.email %> | <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
         <% else %>

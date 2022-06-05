@@ -13,3 +13,25 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+nav {
+  height: 8vh;
+  background-color: aquamarine;
+}
+
+nav li {
+  list-style-type: none;
+  padding-right: 5vw;
+  align-content: center;
+  padding-top: 2vh;
+}
+
+nav .navbar-brand{
+  font-size: 40;
+  padding-top: 2.5vh;
+}
+
+#user_auth {
+  padding-left: 50vw;
+  padding-right: 0vw;
+}

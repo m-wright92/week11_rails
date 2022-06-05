@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: %i[root index]
+  before_action :authenticate_user!, except: %i[show index] do
+    redirect_to products_path unless current_user&.admin?
+  end
 
   def index
     @products = Product.all
@@ -13,9 +19,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:notice] = "Product added!"
+      flash[:notice] = 'Product added!'
       redirect_to products_path
-    else 
+    else
       render :new
     end
   end
@@ -33,22 +39,23 @@ class ProductsController < ApplicationController
   def update
     @products = Product.find(params[:id])
     if @products.update(product_params)
-      flash[:notice] = "Product Updated"
+      flash[:notice] = 'Product Updated'
       redirect_to products_path
     else
-      render :edit  
+      render :edit
     end
   end
 
   def destroy
-   @product = Product.find(params[:id])
-   @product.destroy
-   flash[:notice] = "Product Deleted"
-   redirect_to products_path
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:notice] = 'Product Deleted'
+    redirect_to products_path
   end
 
   private
-    def product_params
-      params.require(:product).permit(:name, :cost, :coo)
-    end
+
+  def product_params
+    params.require(:product).permit(:name, :cost, :coo)
+  end
 end
