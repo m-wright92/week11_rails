@@ -1,7 +1,7 @@
 <h1><%= @product.name %></h1>
 
 <% if @product.reviews.any? %>
-  <h4>Reviews:</h4>
+  <h4><%= @product.reviews.count%> Reviews: </h4>
 
   <% @product.reviews.each do |review| %>
     <p>
