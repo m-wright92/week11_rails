@@ -1,24 +1,47 @@
-# README
+# Mario's Specialty Foods
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### An example site for a specialty foods store
 
-Things you may want to cover:
+#### By Mike Wright
 
-* Ruby version
+## Technologies Used
 
-* System dependencies
+* Ruby 2.6.10
+* 5.2.8
+* rspec
+* capybara
+* pry
+* Postgres
+* psql
+* faker
+* devise
+* HTML
+* CSS
 
-* Configuration
 
-* Database creation
+## A site for a prospective client named Mario who runs a specialty foods store. It includes user registration as well as admin privelages that allow an admin to add or delete products from the inventory. 
 
-* Database initialization
+## Setup/Installation Requirements
 
-* How to run the test suite
+* Clone this repo
+* Run `postgres` in your terminal to start your sql server
+* In a new terminal, navigate to the root directory of this repo and run `bundle install` to install all required gems.
+* Run `rake db:create` to create development and test databases.
+* Run `rake db:migrate` to build necessary tables for the database.
+* Run `rake db:seed` to seed the database.
+* To check all passing test specs, run `rspec` in the terminal, this will test all files in the 'spec' directory.
+* Run `rails s` in the terminal from the root directory to start the server
+* Open your browser and navigate to http://localhost:3000/
+* Sign up to become a registered user to navigate the site.
+* You will need to assign admin privelages in through psql in the terminal to access all CRUD functionality.
+* You can now navigate the site
 
-* Services (job queues, cache servers, search engines, etc.)
+## Known Bugs
 
-* Deployment instructions
+* No known bugs at this time
 
-* ...
+## License 
+
+MIT
+
+## Copyright (c) 05-27-2022 Mike Wright
