@@ -31,5 +31,28 @@ describe 'user review route' do
     click_button('Create Review')
     expect(page).to have_content('Review uploaded!')
   end
+end
 
+describe 'admin routes' do
+  before(:each) do
+    visit '/'
+    click_on('Sign up')
+    fill_in('user_email', :with => 'admin@admin.com')
+    fill_in('user_password', :with => 'adminpass')
+    fill_in('user_password_confirmation', :with => 'adminpass')
+    click_button('Sign up')
+    User.where(email: 'admin@admin.com').update(admin: true)
+  end
+
+  it 'allows the admin to add a product' do
+    visit '/'
+    click_on('View all products')
+    click_on('Add a new product')
+    fill_in('Name', :with => 'brocoli')
+    fill_in('product_coo', :with => 'usa')
+    fill_in('Cost', :with => 5)
+    click_on('Create Product')
+    expect(page).to have_content('Product added!')
+    expect(page).to have_content('Brocoli')
+  end
 end
