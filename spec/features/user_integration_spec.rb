@@ -11,3 +11,25 @@ describe 'create new user' do
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 end
+
+describe 'user review route' do
+  before(:each) do
+    product = Product.create!(name: "Food", coo: "aby", cost: 2)
+  end
+
+  it 'allows a user to leave a review' do 
+    visit '/'
+    click_on('Sign up')
+    fill_in('user_email', :with => 'test@test.com')
+    fill_in('user_password', :with => 'notadmin')
+    fill_in('user_password_confirmation', :with => 'notadmin')
+    click_button('Sign up')
+    click_on('Food')
+    click_on('Add a review')
+    select(3, :from => 'Rating')
+    fill_in('review_content_body', :with => 'blahblahblahblahblahblahblahblahblahblahblahblahblah')
+    click_button('Create Review')
+    expect(page).to have_content('Review uploaded!')
+  end
+
+end
