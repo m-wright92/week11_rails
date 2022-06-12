@@ -42,6 +42,7 @@ describe 'admin routes' do
     fill_in('user_password_confirmation', :with => 'adminpass')
     click_button('Sign up')
     User.where(email: 'admin@admin.com').update(admin: true)
+    product = Product.create!(name: "Food", coo: "aby", cost: 2)
   end
 
   it 'allows the admin to add a product' do
@@ -53,6 +54,18 @@ describe 'admin routes' do
     fill_in('Cost', :with => 5)
     click_on('Create Product')
     expect(page).to have_content('Product added!')
+    expect(page).to have_content('Brocoli')
+  end
+
+  it 'allows the admin to update a product' do
+    visit '/products'
+    click_on('Food')
+    click_on('Edit product')
+    fill_in('Name', :with => 'brocoli')
+    fill_in('product_coo', :with => 'usa')
+    fill_in('Cost', :with => 5)
+    click_on('Update Product')
+    expect(page).to have_content('Product Updated')
     expect(page).to have_content('Brocoli')
   end
 end
