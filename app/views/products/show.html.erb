@@ -4,22 +4,35 @@
   <h4><%= @product.reviews.count%> Reviews: </h4>
 
   <% @product.reviews.each do |review| %>
-    <p>
-      Reviewer: <%= review.author %> 
-      Rating: <%= review.rating %>/5 <br>
-      Review: <%= review.content_body%>
-    </p>
-    <br>
+    <div class="col-sm-6">
+      <div class="card reviews">
+        <div class="card-body">
+          <h5 class="card-title">Reviewed by: <%= review.author %> Rating: <%= review.rating %>/5</h5>
+          <p class="card-text"><%= review.content_body%></p>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% else %>
   <p>There are no reviews for this product.</p>
 <% end %>
 
-<p><%= link_to "Add a review", new_product_review_path(@product, @review) %></p>
+<div>
+  <% if current_user %>
+    <p><%= link_to "Add a review", new_product_review_path(@product, @review) %></p>
+  <% else %>
+  <p>If you would like to leave a review, you must first sign in.</p>
+  <% end %>
 
-<p><%= link_to "Edit product", edit_product_path(@product) %></p>
-<p><%= link_to "Delete product", product_path(@product),
-                        :data => {:confirm => "Are you sure?",
-                                       :method => "delete"} %></p>
+  <% if current_user&.admin? %>
+    <p><%= link_to "Edit product", edit_product_path(@product) %></p>
+    <p><%= link_to "Delete product", product_path(@product),
+                            :data => {:confirm => "Are you sure?",
+                                          :method => "delete"} %></p>
+  <% end %>                                    
 
-<p><%= link_to "Return to products", products_path %></p>
+  <p><%= link_to "Return to products", products_path %></p>
+</div>
+
+
+
