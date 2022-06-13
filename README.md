@@ -39,7 +39,7 @@
 ## How to set an admin for full use of site
 
 * After you make a user on the site, run `rails c` to open the rails console
-* In the console type `User.where(email: "[the email you used to create your user]").update(admin: true)`
+* In the console type `User.where(email: "[email_used_to_create_user_account]").update(admin: true)`
 * That user will now have access to full CRUD functionality for everything but updating/deleting a review(we don't support dishonesty in regards to reviews)
 
 ## Known Bugs
