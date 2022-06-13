@@ -75,4 +75,14 @@ describe 'admin routes' do
     click_link('Delete product')
     expect(page).to have_content('Product Deleted')
   end
+
+  it 'allows an admin to leave a review' do 
+    visit '/products'
+    click_on('Food')
+    click_on('Add a review')
+    select(3, :from => 'Rating')
+    fill_in('review_content_body', :with => 'blahblahblahblahblahblahblahblahblahblahblahblahblah')
+    click_button('Create Review')
+    expect(page).to have_content('Review uploaded!')
+  end
 end
