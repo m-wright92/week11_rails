@@ -36,6 +36,12 @@
 * You will need to assign admin privelages in through psql in the terminal to access all CRUD functionality.
 * You can now navigate the site
 
+## How to set an admin for full use of site
+
+* After you make a user on the site, run `rails c` to open the rails console
+* In the console type `User.where(email: "[the email you used to create your user]").update(admin: true)`
+* That user will now have access to full CRUD functionality for everything but updating/deleting a review(we don't support dishonesty in regards to reviews)
+
 ## Known Bugs
 
 * No known bugs at this time
