@@ -68,4 +68,11 @@ describe 'admin routes' do
     expect(page).to have_content('Product Updated')
     expect(page).to have_content('Brocoli')
   end
+
+  it 'allows the admin to delete a product' do
+    visit '/products'
+    click_on('Food')
+    click_link('Delete product')
+    expect(page).to have_content('Product Deleted')
+  end
 end
