@@ -7,7 +7,7 @@
 ## Technologies Used
 
 * Ruby 2.6.10
-* 5.2.8
+* Rails 5.2.8
 * rspec
 * capybara
 * pry
